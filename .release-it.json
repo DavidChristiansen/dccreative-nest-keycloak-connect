@@ -1,0 +1,21 @@
+{
+  "$schema": "https://unpkg.com/release-it/schema/release-it.json",
+  "git": {
+    "commitMessage": "${version}",
+    "commitArgs": [
+      "-S"
+    ],
+    "tagArgs": [
+      "-s"
+    ]
+  },
+  "hooks": {
+    "after:bump": [
+      "yarn clean",
+      "yarn build"
+    ]
+  },
+  "github": {
+    "release": true
+  }
+}
