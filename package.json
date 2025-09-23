@@ -1,6 +1,6 @@
 {
   "name": "dccreative-nestjs-keycloak-connect",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "keycloak-nodejs-connect module for Nest (Fork)",
   "author": "David Christiansen <coding@davedoes.net>",
   "license": "MIT",
