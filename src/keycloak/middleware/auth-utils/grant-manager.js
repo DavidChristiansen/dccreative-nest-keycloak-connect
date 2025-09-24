@@ -33,6 +33,7 @@ const Rotation = require('./rotation')
  */
 function GrantManager (config) {
   this.realmUrl = config.realmUrl
+  this.issuerRealmUrl = config.issuerRealmUrl || config.realmUrl
   this.clientId = config.clientId
   this.secret = config.secret
   this.publicKey = config.publicKey
@@ -425,8 +426,8 @@ GrantManager.prototype.validateToken = function validateToken (token, expectedTy
       reject(new Error('invalid token (wrong type)'))
     } else if (token.content.iat < this.notBefore) {
       reject(new Error('invalid token (stale token)'))
-    } else if (token.content.iss !== this.realmUrl) {
-      reject(new Error(`invalid token (wrong ISS), expected ${this.realmUrl}, token contains ${token.content.iss}`))
+    } else if (token.content.iss !== this.issuerRealmUrl) {
+      reject(new Error(`invalid token (wrong ISS), expected ${this.issuerRealmUrl}, token contains ${token.content.iss}`))
     } else {
       const audienceData = Array.isArray(token.content.aud) ? token.content.aud : [token.content.aud]
       if (expectedType === 'ID') {

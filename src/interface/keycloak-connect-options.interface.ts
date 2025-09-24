@@ -143,6 +143,13 @@ export interface KeycloakConnectConfig extends NestKeycloakConfig {
   authServerUrl?: string;
 
   /**
+   * Issuer URL for JWT validation (optional).
+   * Use this when the public-facing URL differs from the internal authServerUrl.
+   * If not specified, defaults to authServerUrl.
+   */
+  issuerUrl?: string;
+
+  /**
    * How many minutes before retrying getting the keys.
    * @see {KeycloakConnectOptions#minTimeBetweenJwksRequests}
    */

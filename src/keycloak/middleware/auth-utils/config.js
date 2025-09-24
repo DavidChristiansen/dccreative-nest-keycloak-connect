@@ -125,10 +125,22 @@ Config.prototype.configure = function configure (config) {
   this.authServerUrl = (resolveValue(config['auth-server-url'] || config['server-url'] || config.serverUrl || config.authServerUrl) || '').replace(/\/*$/gi, '')
 
   /**
+   * Issuer URL for JWT validation (optional)
+   * @type {String}
+   */
+  this.issuerUrl = resolveValue(config.issuerUrl) ? resolveValue(config.issuerUrl).replace(/\/*$/gi, '') : null
+
+  /**
    * Root realm URL.
    * @type {String}
    */
   this.realmUrl = this.authServerUrl + '/realms/' + this.realm
+
+  /**
+   * Issuer realm URL for JWT validation.
+   * @type {String}
+   */
+  this.issuerRealmUrl = this.issuerUrl ? this.issuerUrl + '/realms/' + this.realm : this.realmUrl
 
   /**
    * Root realm admin URL.
